@@ -11,6 +11,7 @@ interface Props {
     value?: string
     type?: inputTypes
     onChange?: ChangeEventHandler<HTMLInputElement>
+    error?: boolean
 }
 
 export const Input = ({
@@ -18,12 +19,16 @@ export const Input = ({
     placeholder,
     value,
     type,
-    onChange
+    onChange,
+    error = false
 }: Props) => {
     return (
         <input
             type={type}
-            className={classNames(styles.input, className)}
+            className={classNames(
+                error ? styles.error : styles.input,
+                className
+            )}
             value={value}
             placeholder={placeholder}
             onChange={onChange}
