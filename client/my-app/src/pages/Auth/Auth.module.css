@@ -9,8 +9,9 @@
     width: 500px;
     height: 700px;
     border-radius: 30px;
-    padding: 50px;
+    padding: 40px;
     text-align: center;
+    border: 1px solid rgb(36, 34, 58);
 }
 
 .form {

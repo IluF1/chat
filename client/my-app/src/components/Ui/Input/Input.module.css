@@ -1,21 +1,32 @@
-.input,
-.error {
+.container {
+    position: relative; 
+    display: flex;
+    align-items: center;
+}
+
+.input {
     width: 100%;
     height: 45px;
     border-radius: 10px;
     border: none;
     outline: none;
-    background-color: rgb(34, 39, 41);
+    background-color: rgb(21, 20, 34);
+    padding-right: 50px; 
     padding-left: 20px;
-    border: 1px solid rgb(97, 97, 97);
-    color: rgb(132, 144, 145);
-}
-
-.input::placeholder,
-.error::placeholder {
-    color: rgb(132, 144, 145);
+    border: 1px solid rgb(36, 34, 58);
 }
 
 .error {
     border: 1px solid rgb(255, 0, 0);
+}
+
+.showPasswordButton {
+    position: absolute;
+    right: 10px;
+    top: 63%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
 }

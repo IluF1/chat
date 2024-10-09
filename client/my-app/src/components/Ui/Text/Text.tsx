@@ -1,4 +1,5 @@
 import classNames from 'classnames'
+import { memo } from 'react'
 
 import styles from './Text.module.css'
 
@@ -10,8 +11,8 @@ interface Props {
     tag?: tag
 }
 
-export const Text = ({ className, children, tag = 'p' }: Props) => {
+export const Text = memo(({ className, children, tag = 'p' }: Props) => {
     const Tag = tag
 
     return <Tag className={classNames(styles[Tag], className)}>{children}</Tag>
-}
+})

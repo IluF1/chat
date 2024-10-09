@@ -11,10 +11,11 @@
     border-radius: 30px;
     padding: 50px;
     text-align: center;
+    border: 1px solid rgb(36, 34, 58);
 }
 
 .form {
-    margin-top: 200px;
+    margin-top: 150px;
 }
 
 .button {

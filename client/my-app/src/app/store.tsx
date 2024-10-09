@@ -1,9 +1,11 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit'
 
-import { RegistrationSliceReducers } from '@/pages/Registration/model/api.slice'
+import { AuthSliceReducers } from '@/pages/Auth/model/api.slice'
+import { RegistrationSliceReducers } from '@/pages/Registration/model/Slices/api.slice'
 
 const reducers = combineReducers({
-    registration: RegistrationSliceReducers
+    registration: RegistrationSliceReducers,
+    auth: AuthSliceReducers
 })
 
 export const Store = configureStore({

@@ -35,6 +35,12 @@ export class UserDto {
         enum: ['Admin', 'User']
     })
     readonly role: Roles
+
+    @ApiProperty({
+        description: 'RefreshToken'
+    })
+    @IsString({ message: 'Должно быть строкой ' })
+    readonly refreshToken: string
 }
 
 export enum Roles {

@@ -1,5 +1,5 @@
 import { CSSProperties } from 'react'
-import { ClipLoader } from 'react-spinners'
+import { SyncLoader } from 'react-spinners'
 
 const override: CSSProperties = {
     display: 'block',
@@ -8,10 +8,10 @@ const override: CSSProperties = {
 }
 
 export const Spinner = () => (
-    <ClipLoader
-        color="green"
+    <SyncLoader
+        color="rgb(69, 65, 110)"
         cssOverride={override}
-        size={150}
+        size={10}
         aria-label="Loading Spinner"
         data-testid="loader"
     />

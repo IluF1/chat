@@ -1,5 +1,6 @@
 import classNames from 'classnames'
-import { ChangeEventHandler } from 'react'
+import { Eye, EyeClosed } from 'lucide-react'
+import { ChangeEventHandler, useState } from 'react'
 
 import styles from './Input.module.css'
 
@@ -18,20 +19,28 @@ export const Input = ({
     className,
     placeholder,
     value,
-    type,
+    type = 'text',
     onChange,
     error = false
 }: Props) => {
+    const [show, setShow] = useState<boolean>(false)
     return (
-        <input
-            type={type}
-            className={classNames(
-                error ? styles.error : styles.input,
-                className
+        <div className={styles.container}>
+            <input
+                type={show ? 'text' : type}
+                className={classNames(
+                    error ? styles.error : styles.input,
+                    className
+                )}
+                value={value}
+                placeholder={placeholder}
+                onChange={onChange}
+            />
+            {type === 'password' && (
+                <button type="button" onClick={() => setShow(!show)} className={styles.showPasswordButton}>
+                    {show ? <Eye /> : <EyeClosed />}
+                </button>
             )}
-            value={value}
-            placeholder={placeholder}
-            onChange={onChange}
-        />
+        </div>
     )
 }
