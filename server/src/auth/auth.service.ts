@@ -16,7 +16,7 @@ export class AuthService {
         private cookie: CookiesService
     ) {}
 
-    async auth(dto: UserDto, response: any) {
+    async auth(dto: UserDto, response: Response) {
         if (!dto.login || !dto.password) {
             throw new HttpException('Логин и пароль обязательны', 400)
         }
@@ -43,7 +43,7 @@ export class AuthService {
             maxAge: 7 * 24 * 60 * 60 * 1000
         })
         return {
-            user: find,
+            find,
             ...tokens
         }
     }

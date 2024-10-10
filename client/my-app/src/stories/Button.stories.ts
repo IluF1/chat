@@ -17,9 +17,9 @@ const meta = {
 export default meta
 type Story = StoryObj<typeof meta>
 
-export const Outline: Story = {
+export const Dark: Story = {
     args: {
-        variant: 'outline',
+        variant: 'dark',
         children: 'Button'
     }
 }

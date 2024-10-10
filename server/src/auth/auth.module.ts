@@ -12,7 +12,6 @@ import { CookiesModule } from 'src/cookies/cookies.module'
     imports: [
         PrismaModule,
         JwtModule.register({
-            global: true,
             secret: process.env.SECRET || 'secret',
             signOptions: { expiresIn: '24h' }
         }),

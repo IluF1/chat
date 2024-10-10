@@ -1,4 +1,5 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
+import * as cookie from 'cookie'
 
 import { instance } from '@/components/Helpers/constants'
 
@@ -18,21 +19,26 @@ const initialState: IInitialState = {
         login: '',
         password: ''
     },
-    error: ''
+    error: null
 }
 
-export const authApi = createAsyncThunk('api/auth', async (user: IUser) => {
-    try {
-        const response = await instance.post('/auth', {
-            login: user.login,
-            password: user.password
-        })
+export const authApi = createAsyncThunk(
+    'api/auth',
+    async (user: IUser, { rejectWithValue }) => {
+        try {
+            const response = await instance.post('/auth', {
+                login: user.login,
+                password: user.password
+            })
 
-        return response.data
-    } catch (err) {
-        console.log(err)
+            localStorage.setItem('accessToken', response.data.accessToken)
+
+            return response.data
+        } catch (err: any) {
+            return rejectWithValue(err?.response?.data?.message || '')
+        }
     }
-})
+)
 
 const AuthSlice = createSlice({
     name: 'authSlice',
@@ -40,7 +46,7 @@ const AuthSlice = createSlice({
     reducers: {},
     extraReducers: (builder) => {
         builder.addCase(authApi.fulfilled, (state, action) => {
-            state.user = action.payload
+            state.user = action.payload.find
             state.error = null
         })
         builder.addCase(authApi.rejected, (state, action) => {

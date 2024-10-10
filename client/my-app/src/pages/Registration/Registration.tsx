@@ -1,10 +1,12 @@
-import { useState } from 'react'
+import { FormEvent, useState } from 'react'
 
-import { useAppDispatch } from '@/components/Helpers/Hooks/useAppDispatch'
-import { useAppSelector } from '@/components/Helpers/Hooks/useAppSelector'
+import {
+    useAppDispatch,
+    useAppSelector,
+    useValidationPassword
+} from '@/components/Helpers/Hooks'
 import { Button, Input, Text } from '@/components/Ui'
 
-import { useValidationPassword } from '../../components/Helpers/Hooks/useValidationPassword'
 import { registrationApi } from './model/Slices/api.slice'
 import styles from './Registration.module.css'
 
@@ -16,7 +18,7 @@ const Registration = () => {
         validationData
     } = useValidationPassword()
 
-    const error = useAppSelector(state => state.registration.error)
+    const error = useAppSelector((state) => state.registration.error)
 
     const [data, setData] = useState({
         name: '',
@@ -25,7 +27,7 @@ const Registration = () => {
         repeatPassword: ''
     })
 
-    const registration = (e: React.FormEvent) => {
+    const registration = (e: FormEvent) => {
         e.preventDefault()
         if (!validationData.error) {
             dispatch(

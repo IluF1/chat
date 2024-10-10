@@ -1,6 +1,7 @@
 import { lazy, Suspense } from 'react'
 import { createBrowserRouter } from 'react-router-dom'
 
+import { RedirectToHomePage } from '@/components/Helpers/redirectToHomePage'
 import { Spinner } from '@/components/Ui/Spinner'
 
 const Auth = lazy(() => import('@/pages/Auth/Auth'))
@@ -12,7 +13,9 @@ export const Router = createBrowserRouter([
         path: '/auth',
         element: (
             <Suspense fallback={<Spinner />}>
-                <Auth />
+                <RedirectToHomePage>
+                    <Auth />
+                </RedirectToHomePage>
             </Suspense>
         )
     },
@@ -20,7 +23,9 @@ export const Router = createBrowserRouter([
         path: '/registration',
         element: (
             <Suspense fallback={<Spinner />}>
-                <Registration />
+                <RedirectToHomePage>
+                    <Registration />
+                </RedirectToHomePage>
             </Suspense>
         )
     },

@@ -34,7 +34,7 @@ export const registrationApi = createAsyncThunk(
             })
             return response.data
         } catch (err: any) {
-            return rejectWithValue(err.response?.data?.message || 'Something went wrong')
+            return rejectWithValue(err.response?.data?.message || '  ')
         }
     }
 )
@@ -52,12 +52,9 @@ const RegistrationSlice = createSlice({
                     state.error = null
                 }
             )
-            .addCase(
-                registrationApi.rejected,
-                (state, action) => {
-                    state.error = action.payload as string
-                }
-            )
+            .addCase(registrationApi.rejected, (state, action) => {
+                state.error = action.payload as string
+            })
     }
 })
 
